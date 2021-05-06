@@ -1,8 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import globalsReducer from '../redux/reducers/globals';
+import filtersReducer from '../redux/reducers/filters';
+import coinsReducer from '../redux/reducers/coins';
+import exchangeRatesReducer from '../redux/reducers/exchangeRates';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    globals: globalsReducer,
+    filters: filtersReducer,
+    coins: coinsReducer,
+    exchangeRates: exchangeRatesReducer,
   },
 });
