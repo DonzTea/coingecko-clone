@@ -26,23 +26,18 @@ export const fetchCoins = async () => {
         '',
       )[0];
       const coinChartImageUrl = `https://www.coingecko.com/coins/${coinIndex}/sparkline`;
-      const coinDetailRedirectUrl = `/coins/${coin.name
-        .toLowerCase()
-        .trim()
-        .replace(' ', '-')}`;
 
       coins.push({
         id: coin.id,
         isFavorite: false,
         name: coin.name,
-        detailUrl: coinDetailRedirectUrl,
         logo: coin.image.replace('large', 'small'),
         price: formatDollar(coin.current_price),
         percentage1h: coinPercentage1h,
         percentage24h: coinPercentage24h,
         percentage7d: coinPercentage7d,
-        volume: formatDollar(coin.total_volume),
-        marketCap: formatDollar(coin.market_cap),
+        volume: formatDollar(coin.total_volume, false),
+        marketCap: formatDollar(coin.market_cap, false),
         chartImageUrl: coinChartImageUrl,
         index: coin.symbol.toUpperCase(),
       });

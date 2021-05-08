@@ -17,7 +17,7 @@ export default function CustomChart({ coinId, days }) {
           labels: result.map(() => ''),
           datasets: [
             {
-              label: 'price',
+              label: 'Price',
               data: result,
               borderColor: colors.blue,
               backgroundColor: colors.blue,
@@ -56,11 +56,26 @@ export default function CustomChart({ coinId, days }) {
         }
       })
       .catch((e) => console.error(e));
-  }, [days]);
+  }, [days, chart, coinId]);
 
   return (
-    <div>
-      <canvas id="chart" ref={ref}></canvas>
-    </div>
+    <>
+      {/* loading spinner */}
+      {chart === null ? (
+        <div className="d-flex justify-content-center">
+          <div
+            className="spinner-border"
+            style={{ width: '3rem', height: '3rem' }}
+            role="status"
+          >
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
+      ) : null}
+
+      <div>
+        <canvas id="chart" ref={ref}></canvas>
+      </div>
+    </>
   );
 }

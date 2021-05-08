@@ -40,34 +40,54 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled">Markets</a>
+            <a href="/" className="nav-link disabled">
+              Markets
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled">DeFi</a>
+            <a href="/" className="nav-link disabled">
+              DeFi
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled">NFT</a>
+            <a href="/" className="nav-link disabled">
+              NFT
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled">Portfolio</a>
+            <a href="/" className="nav-link disabled">
+              Portfolio
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled">Exchanges</a>
+            <a href="/" className="nav-link disabled">
+              Exchanges
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled">News</a>
+            <a href="/" className="nav-link disabled">
+              News
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled">Tools</a>
+            <a href="/" className="nav-link disabled">
+              Tools
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled">Resources</a>
+            <a href="/" className="nav-link disabled">
+              Resources
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled">Learn</a>
+            <a href="/" className="nav-link disabled">
+              Learn
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled">Community</a>
+            <a href="/" className="nav-link disabled">
+              Community
+            </a>
           </li>
         </ul>
       </div>

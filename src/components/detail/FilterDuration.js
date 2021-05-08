@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function FilterDuration({ days, setDays }) {
   return (
-    <div className="text-right">
-      <div className="btn-group">
+    <div className="text-right mb-3">
+      <div className="btn-group flex-wrap">
         <button
           type="button"
           className={`btn btn-${days === 1 ? 'dark' : 'light'}`}

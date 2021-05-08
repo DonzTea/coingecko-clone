@@ -94,7 +94,7 @@ export default function Table() {
                 <td className="text-center">{i + 1}</td>
                 <td>
                   <img src={coin.logo} width="18px" alt="" />{' '}
-                  <Link to={coin.detailUrl}>
+                  <Link to={`/coins/${coin.id}`}>
                     <b>{coin.name}</b>
                   </Link>
                 </td>

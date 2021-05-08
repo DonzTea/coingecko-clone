@@ -32,7 +32,7 @@ function App() {
       dispatch(fetchExchangeRatesThunk());
       setExchangeRatesFetched(true);
     }
-  }, []);
+  }, [globalsFetched, coinsFetched, exchangeRatesFetched, dispatch]);
 
   return (
     <Router>
