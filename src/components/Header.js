@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { formatDollar } from '../helpers/currency';
 
 import {
   selectCoins,
@@ -47,14 +48,18 @@ export default function Header() {
       </span>
       <span className="d-inline-block mr-3">
         <b>Market Cap: </b>
-        <span className="text-info">{marketCap}</span>
+        <span className="text-info">
+          {isNaN(marketCap) ? marketCap : formatDollar(marketCap, false)}
+        </span>
         <span className={marketCapPercentageColorClass + 'ml-1'}>
           {marketCapPercentage}%<i className={marketCapPercentageClasses}></i>
         </span>
       </span>
       <span className="d-inline-block mr-3">
         <b>24h Vol: </b>
-        <span className="text-info">{vol24h}</span>
+        <span className="text-info">
+          {isNaN(vol24h) ? vol24h : formatDollar(vol24h, false)}
+        </span>
       </span>
       <span className="d-inline-block mr-3">
         <b>Dominance: </b>

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import colors from '../../helpers/colors';
 import axios from '../../app/axios';
+import { formatDollar } from '../../helpers/currency';
 
 export default function CustomChart({ coinId, days }) {
   const ref = useRef(null);
@@ -11,14 +12,24 @@ export default function CustomChart({ coinId, days }) {
     axios
       .get(`/coins/${coinId}/ohlc?vs_currency=usd&days=${days}`)
       .then((res) => {
-        const result = res.data.map((el) => el.pop());
+        const response = res.data;
+        const labels = [];
+        const prices = [];
+        response.forEach((el) => {
+          labels.push('');
+          const date = new Date(el[0]);
+          prices.push({
+            x: date,
+            y: el[4],
+          });
+        });
 
         const data = {
-          labels: result.map(() => ''),
+          labels,
           datasets: [
             {
               label: 'Price',
-              data: result,
+              data: prices,
               borderColor: colors.blue,
               backgroundColor: colors.blue,
             },
@@ -35,9 +46,25 @@ export default function CustomChart({ coinId, days }) {
             data: data,
             options: {
               responsive: true,
+              interaction: {
+                intersect: false,
+                mode: 'index',
+              },
               plugins: {
                 legend: {
                   display: false,
+                },
+                tooltip: {
+                  mode: 'index',
+                  callbacks: {
+                    title: function (tooltipItems) {
+                      const date = tooltipItems[0].raw.x;
+                      return `${date.toDateString()}, ${date.toLocaleTimeString()}`;
+                    },
+                    label: function (tooltipItem) {
+                      return 'Price: ' + formatDollar(tooltipItem.parsed.y);
+                    },
+                  },
                 },
               },
               scales: {
@@ -48,6 +75,14 @@ export default function CustomChart({ coinId, days }) {
                     },
                   },
                 ],
+                y: {
+                  ticks: {
+                    // Include a dollar sign in the ticks
+                    callback: function (value, index, values) {
+                      return formatDollar(value, false);
+                    },
+                  },
+                },
               },
             },
           };

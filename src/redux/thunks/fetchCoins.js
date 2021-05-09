@@ -1,7 +1,5 @@
 import axios from '../../app/axios';
 
-import { formatDollar } from '../../helpers/currency';
-
 export const fetchCoins = async () => {
   try {
     const response = await axios.get(
@@ -29,15 +27,16 @@ export const fetchCoins = async () => {
 
       coins.push({
         id: coin.id,
+        number: i + 1,
         isFavorite: false,
         name: coin.name,
         logo: coin.image.replace('large', 'small'),
-        price: formatDollar(coin.current_price),
+        price: coin.current_price,
         percentage1h: coinPercentage1h,
         percentage24h: coinPercentage24h,
         percentage7d: coinPercentage7d,
-        volume: formatDollar(coin.total_volume, false),
-        marketCap: formatDollar(coin.market_cap, false),
+        volume: coin.total_volume,
+        marketCap: coin.market_cap,
         chartImageUrl: coinChartImageUrl,
         index: coin.symbol.toUpperCase(),
       });

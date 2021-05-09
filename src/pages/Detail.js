@@ -11,6 +11,7 @@ import CustomChart from '../components/detail/CustomChart';
 import FilterDuration from '../components/detail/FilterDuration';
 import { selectExchangeRates } from '../redux/reducers/exchangeRates';
 import Loading from '../components/Loading';
+import { formatDollar } from '../helpers/currency';
 
 export default function Detail() {
   let { coin_id: coinId } = useParams();
@@ -57,7 +58,9 @@ export default function Detail() {
                 {coin.name} ({coin.index})
               </span>
               <span>
-                <span className="highlight mr-2">{coin.price}</span>
+                <span className="highlight mr-2">
+                  {formatDollar(coin.price)}
+                </span>
                 <span
                   style={{
                     color: coin.percentage24h >= 0 ? colors.green : colors.red,
