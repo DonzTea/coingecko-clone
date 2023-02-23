@@ -1,6 +1,6 @@
 # Coingecko Clone
 
-Cloned version of [coingecko](https://www.coingecko.com/en).
+Cloned version of [coingecko](https://www.coingecko.com/en) (only main page for interview purpose).
 
 ## Demo
 
